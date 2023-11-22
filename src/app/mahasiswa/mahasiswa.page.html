@@ -1,0 +1,147 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-title">Data Mahasiswa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of dataMahasiswa" class="rounded-card">
+    <ion-item>
+      <ion-label>
+        {{item.nama}}
+        <p>{{item.jurusan}}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="open_modal_edit(true,item.id)">
+          <ion-icon name="create-outline" color="white"></ion-icon>
+        </ion-button>
+        <ion-button color="white" (click)="hapusMahasiswa(item.id)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-card>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="open_modal_tambah(true)" color="light">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-modal [isOpen]="modal_tambah">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <!-- Tombol Kembali di Bagian Kiri Header -->
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()" color="light">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <!-- Judul di Tengah -->
+        <ion-title class="ion-title ion-text-center" style="flex: 1;">Tambah Mahasiswa</ion-title>
+        <!-- Tombol Tambah di Bagian Kanan Header -->
+        <ion-buttons slot="end">
+          <ion-button type="button" (click)="tambahMahasiswa()" color="light" style="margin-right: 5px;">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <!-- Isi Konten Modal -->
+      <ion-item>
+        <ion-input
+          label="Nama Mahasiswa"
+          labelPlacement="floating"
+          required
+          [(ngModel)]="nama"
+          placeholder="Masukkan Nama Mahasiswa"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Jurusan Mahasiswa"
+          labelPlacement="floating"
+          required
+          [(ngModel)]="jurusan"
+          placeholder="Masukkan Jurusan Mahasiswa"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <!-- Tombol Tambah dan Kembali di Bagian Bawah -->
+      <ion-row style="justify-content: center; margin-top: 20px;">
+        <!-- Tombol Kembali -->
+        <ion-button type="button" (click)="cancel()" color="light" style="margin-right: 5px;">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>
+        <!-- Tombol Tambah dengan Ikon Tanda Tambah -->
+        <ion-button type="button" (click)="tambahMahasiswa()" color="light" style="margin-left: 5px;">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal [isOpen]="modal_edit">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <!-- Tombol Kembali di Bagian Kiri Header -->
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()" color="light">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <!-- Judul di Tengah -->
+        <ion-title class="ion-title ion-text-center" style="flex: 1;">Edit Mahasiswa</ion-title>
+        <!-- Tombol Tambah di Bagian Kanan Header -->
+        <ion-buttons slot="end">
+          <ion-button type="button" (click)="editMahasiswa()" color="light" style="margin-right: 5px;">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <!-- Isi Konten Modal -->
+      <ion-item>
+        <ion-input
+          label="Nama Mahasiswa"
+          labelPlacement="floating"
+          required
+          [(ngModel)]="nama"
+          placeholder="Masukkan Nama Mahasiswa"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Jurusan Mahasiswa"
+          labelPlacement="floating"
+          required
+          [(ngModel)]="jurusan"
+          placeholder="Masukkan Jurusan Mahasiswa"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <!-- Tombol Tambah dan Kembali di Bagian Bawah -->
+      <ion-row style="justify-content: center; margin-top: 20px;">
+        <!-- Tombol Kembali -->
+        <ion-button type="button" (click)="cancel()" color="light" style="margin-right: 5px;">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>
+        <!-- Tombol Tambah dengan Ikon Tanda Tambah -->
+        <ion-button type="button" (click)="editMahasiswa()" color="light" style="margin-left: 5px;">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>        
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>

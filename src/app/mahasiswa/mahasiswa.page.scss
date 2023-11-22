@@ -1,0 +1,17 @@
+/* mahasiswa.page.scss */
+.custom-edit-icon {
+    color: yellow; /* Ganti dengan warna yang diinginkan */
+  }
+.rounded-card {
+    border-radius: 10px; /* Atur nilai border-radius sesuai keinginan Anda */
+}
+ion-item ion-buttons {
+  margin-right: 5px; /* Ubah nilai margin-right sesuai dengan keinginan Anda */
+}
+.ion-title {
+  width: 100%;
+  text-align: center;
+}
+.rounded-input {
+  --border-radius: 15px;
+}
